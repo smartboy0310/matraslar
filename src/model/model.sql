@@ -6,7 +6,8 @@ CREATE TABLE admin (
 
 CREATE TABLE model_matras (
    model_id bigserial PRIMARY KEY,
-   model_name varchar(32) not null
+   model_name varchar(32) not null,
+   model_is_delete boolean DEFAULT false
 );
 
 CREATE TABLE products (
@@ -22,6 +23,7 @@ CREATE TABLE products (
    pro_new boolean DEFAULT true,
    pro_active boolean DEFAULT true,
    pro_images text [] not null,
+   pro_is_delete boolean DEFAULT false,
    model_id int REFERENCES model_matras(model_id) not null
 );
 
