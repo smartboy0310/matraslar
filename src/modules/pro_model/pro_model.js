@@ -36,7 +36,7 @@ module.exports = {
    DELETE_MODEL: async(req, res) => {
       try {
          const {id, is_delete} = req.body
-         res.json( await model.DELETE_MODEL(id, is_delet))         
+         res.json( await model.DELETE_MODEL(id, is_delete))         
       } catch (error) {
          res.json({
             status: 500,

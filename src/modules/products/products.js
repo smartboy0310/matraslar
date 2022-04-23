@@ -60,6 +60,11 @@ module.exports = {
 	},
 	PUT_PRO: async (req, res) => {
 		try {
+			const pro_images = [];
+			const imgFile = req.files;
+			imgFile.map((e) => {
+			pro_images.push(e.path);
+			});
 			const {
 				pro_id,
 				pro_name,
@@ -72,8 +77,6 @@ module.exports = {
 				pro_info,
 				pro_new,
 				pro_active,
-				pro_images,
-				pro_is_delete,
 				model_id,
 			} = req.body;
 			res.json(
@@ -90,7 +93,6 @@ module.exports = {
 					pro_new,
 					pro_active,
 					pro_images,
-					pro_is_delete,
 					model_id,
 				),
 			);

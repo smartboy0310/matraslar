@@ -36,6 +36,7 @@ CREATE TABLE carusel (
 CREATE TABLE generel (
    phone text not null,
    practice varchar(64) not null,
+   glad_client varchar(64) not null,
    guarantee varchar(64) not null,
    delivery varchar(64) not null
 );
@@ -70,6 +71,6 @@ CREATE TABLE address (
    add_name varchar(128) not null,
    add_intended varchar(256) not null,
    add_loc varchar(256) not null,
-   add_image varchar(256) not null,
+   add_image text[] not null,
    add_is_delete boolean DEFAULT false
 );

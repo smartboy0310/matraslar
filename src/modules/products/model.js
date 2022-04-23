@@ -7,6 +7,8 @@ class Products extends PG {
                *
          FROM
                products
+         WHERE 
+               pro_is_delete = false
       `);
 	}
 	ADD_PRO(pro_name, pro_price, pro_particle, pro_format, pro_guarantee, pro_size, pro_share_price, pro_info, pro_new, pro_active, pro_images, pro_is_delete, model_id) {
@@ -31,7 +33,7 @@ class Products extends PG {
       RETURNING *       
       `, pro_name, pro_price, pro_particle, pro_format, pro_guarantee, pro_size,  pro_share_price, pro_info, pro_new, pro_active, pro_images, pro_is_delete, model_id);
 	}
-   UPDATE_PRO(pro_id, pro_name, pro_price, pro_particle, pro_format, pro_guarantee, pro_size,  pro_share_price, pro_info, pro_new, pro_active, pro_images, pro_is_delete, model_id) {
+   UPDATE_PRO(pro_id, pro_name, pro_price, pro_particle, pro_format, pro_guarantee, pro_size,  pro_share_price, pro_info, pro_new, pro_active, pro_images, model_id) {
 		return this.fetch(`      
       UPDATE
             products 
@@ -46,11 +48,10 @@ class Products extends PG {
                      pro_new = $10,
                      pro_active = $11,
                      pro_images = $12, 
-                     pro_is_delete =$13
-                     model_id = $14 
+                     model_id = $13 
       WHERE pro_id = $1
       RETURNING *       
-      `,pro_id, pro_name, pro_price, pro_particle, pro_format, pro_guarantee, pro_size,  pro_share_price, pro_info, pro_new, pro_active, pro_images, pro_is_delete, model_id);
+      `,pro_id, pro_name, pro_price, pro_particle, pro_format, pro_guarantee, pro_size,  pro_share_price, pro_info, pro_new, pro_active, pro_images, model_id);
 	}
    DELETE_PRO (pro_id, pro_is_delete) {
       return this.fetch(`
@@ -74,8 +75,6 @@ class Products extends PG {
          RETURNING * 
       `, pro_id, pro_active)
    }
-   
-
 }
 
 module.exports = new Products();

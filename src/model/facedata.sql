@@ -1,5 +1,6 @@
 INSERT INTO admin (login, password) VALUES ('admin', 'Admin@123');
 
+SELECT COUNT(*) as count_client from orders WHERE order_feedback = true;
 
 
 INSERT INTO model_matras (model_name) VALUES ('Model-A');
