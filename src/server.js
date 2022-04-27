@@ -8,7 +8,7 @@ const router = require('./modules')
 
 app.set(cors())
 app.use(express.json())
-app.use('/assets', express.static(path.resolve(__dirname, '../public')))
+app.use('/public', express.static(path.resolve(__dirname, '../public')))
 app.use(router)
 
 app.listen(PORT, console.log(PORT))
