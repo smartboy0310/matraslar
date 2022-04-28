@@ -32,6 +32,7 @@ router
       .get('/orders', Orders.GET_ORDERS)
       .post('/addOrder', Orders.POST_ORDER)
       .put('/updateOrder', Orders.PUT_FEEDBACK)
+      .delete('/deleteOrder', Orders.DELETE_ORDER)
 
       .get('/customers', Customers.GET_CUSTOMERS)
       .post('/addCustomer', Customers.POST_CUSTOMERS)

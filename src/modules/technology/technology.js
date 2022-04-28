@@ -35,8 +35,8 @@ module.exports = {
    },
    DELETE_TECHNOLOGY: async(req, res) => {
       try {
-         const {cust_id, cust_is_delete} = req.body
-         res.json( await model.DELETE_TECHNOLOGY(cust_id, cust_is_delete))         
+         const {tech_id, tech_is_delete} = req.body
+         res.json( await model.DELETE_TECHNOLOGY(tech_id, tech_is_delete))         
       } catch (error) {
          res.json({
             status: 500,

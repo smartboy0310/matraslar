@@ -9,6 +9,7 @@ class Orders extends PG {
                orders
       `)
    }
+   
    ADD_ORDER (user_name, user_phone, order_pro_name, order_count ) {
       return this.fetch(`
          INSERT INTO
@@ -24,6 +25,20 @@ class Orders extends PG {
          RETURNING *          
       `, user_name, user_phone, order_pro_name, order_count)
    }
+
+   DELETE_ORDER(order__id, order__is_delete) {
+      return this.fetch(`
+         UPDATE 
+               technology 
+         SET   
+               order_delete_at = CURRENT_TIMESTAMP
+               order__is_delete= $2
+         WHERE 
+               order__id = $1
+         RETURNING * 
+      `, order__id, order__is_delete)
+   }
+
    COUNT_FEEDBACK() {
       return this.fetch(`
       SELECT 

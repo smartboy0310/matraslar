@@ -39,6 +39,7 @@ class Customers extends PG {
          UPDATE 
                customers 
          SET   
+               cust_delete_at = CURRENT_TIMESTAMP
                cust_is_delete= $2
          WHERE 
                cust_id = $1

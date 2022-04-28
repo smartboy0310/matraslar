@@ -36,5 +36,16 @@ module.exports = {
 				message: error.message,
 			});
 		}
-	}
+	},
+   DELETE_ORDER: async(req, res) => {
+      try {
+         const {order_id, order_is_delete} = req.body
+         res.json( await model.DELETE_ORDER(order_id, order_is_delete))         
+      } catch (error) {
+         res.json({
+            status: 500,
+            message: error.message
+         })
+      }
+   }
 }

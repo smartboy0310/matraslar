@@ -58,6 +58,7 @@ class Products extends PG {
          UPDATE 
                products 
          SET   
+               pro_delete_at = CURRENT_TIMESTAMP
                pro_is_delete = $2
          WHERE 
                pro_id = $1

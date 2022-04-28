@@ -7,6 +7,9 @@ CREATE TABLE admin (
 CREATE TABLE model_matras (
    model_id bigserial PRIMARY KEY,
    model_name varchar(32) not null,
+   model_active boolean DEFAULT true,
+   model_create_at timestamptz DEFAULT CURRENT_TIMESTAMP,
+   model_delete_at timestamptz DEFAULT CURRENT_TIMESTAMP,
    model_is_delete boolean DEFAULT false
 );
 
@@ -23,6 +26,8 @@ CREATE TABLE products (
    pro_new boolean DEFAULT true,
    pro_active boolean DEFAULT true,
    pro_images text [] not null,
+   pro_create_at timestamptz DEFAULT CURRENT_TIMESTAMP,
+   pro_delete_at timestamptz DEFAULT CURRENT_TIMESTAMP,
    pro_is_delete boolean DEFAULT false,
    model_id int REFERENCES model_matras(model_id) not null
 );
@@ -30,6 +35,8 @@ CREATE TABLE products (
 CREATE TABLE carusel (
    carusel_id serial PRIMARY KEY,
    carusel_title varchar(256) not null,
+   carusel_create_at timestamptz DEFAULT CURRENT_TIMESTAMP,
+   carusel_delete_at timestamptz DEFAULT CURRENT_TIMESTAMP,
    carusel_image text not null
 );
 
@@ -38,6 +45,8 @@ CREATE TABLE generel (
    practice varchar(64) not null,
    glad_client varchar(64) not null,
    guarantee varchar(64) not null,
+   generel_create_at timestamptz DEFAULT CURRENT_TIMESTAMP,
+   generel_delete_at timestamptz DEFAULT CURRENT_TIMESTAMP,
    delivery varchar(64) not null
 );
 
@@ -47,6 +56,8 @@ CREATE TABLE orders (
    user_phone varchar(32) not null,
    order_pro_name varchar(64) not null,
    order_count int not null,
+   order_create_at timestamptz DEFAULT CURRENT_TIMESTAMP,
+   order__delete_at timestamptz DEFAULT CURRENT_TIMESTAMP,
    order_feedback boolean DEFAULT false
 );
 
@@ -55,6 +66,8 @@ CREATE TABLE customers (
    curt_create_at timestamptz DEFAULT CURRENT_TIMESTAMP,
    cust_phone varchar(32) not null,
    cust_feedback boolean DEFAULT false,
+   cust_create_at timestamptz DEFAULT CURRENT_TIMESTAMP,
+   cust_delete_at timestamptz DEFAULT CURRENT_TIMESTAMP,
    cust_is_delete boolean DEFAULT false
 );
 
@@ -63,6 +76,8 @@ CREATE TABLE technology (
    tech_name varchar(32) not null,
    tech_title varchar(256) not null,
    tech_link text not null,
+   tech_create_at timestamptz DEFAULT CURRENT_TIMESTAMP,
+   tech_delete_at timestamptz DEFAULT CURRENT_TIMESTAMP,
    tech_is_delete boolean DEFAULT false
 );
 
@@ -72,5 +87,7 @@ CREATE TABLE address (
    add_intended varchar(256) not null,
    add_loc varchar(256) not null,
    add_image text[] not null,
+   add_create_at timestamptz DEFAULT CURRENT_TIMESTAMP,
+   add_delete_at timestamptz DEFAULT CURRENT_TIMESTAMP,
    add_is_delete boolean DEFAULT false
 );

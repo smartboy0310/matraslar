@@ -38,16 +38,17 @@ class Technology extends PG {
          RETURNING * 
       `,tech_id, tech_name, tech_title, tech_link)
    }
-   DELETE_TECHNOLOGY(cust_id, cust_is_delete) {
+   DELETE_TECHNOLOGY(tech__id, tech__is_delete) {
       return this.fetch(`
          UPDATE 
                technology 
          SET   
-               cust_is_delete= $2
+               tech_delete_at = CURRENT_TIMESTAMP
+               tech__is_delete= $2
          WHERE 
-               cust_id = $1
+               tech__id = $1
          RETURNING * 
-      `, cust_id, cust_is_delete)
+      `, tech__id, tech__is_delete)
    }
 }
 

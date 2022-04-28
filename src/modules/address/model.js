@@ -45,6 +45,7 @@ class Address  extends PG {
          UPDATE 
                address 
          SET   
+               add_delete_at = CURRENT_TIMESTAMP
                add_is_delete= $2
          WHERE 
                add_id = $1
