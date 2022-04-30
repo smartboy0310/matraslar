@@ -34,6 +34,9 @@ module.exports = {
 				model_id,
 			} = req.body;
 
+			if (pro_share_price == undefined) {
+				pro_share_price = 0
+			}
 			res.json(
 				await model.ADD_PRO(
 					pro_name,
@@ -42,7 +45,7 @@ module.exports = {
 					pro_format,
 					pro_guarantee,
 					pro_size,
-					pro_share_price - 0,
+					pro_share_price,
 					pro_info,
 					pro_new,
 					pro_active,

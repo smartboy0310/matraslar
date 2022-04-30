@@ -6,7 +6,7 @@ CREATE TABLE admin (
 
 CREATE TABLE model_matras (
    model_id bigserial PRIMARY KEY,
-   model_name varchar(32) not null,
+       varchar(32) not null,
    model_active boolean DEFAULT true,
    model_create_at timestamptz DEFAULT CURRENT_TIMESTAMP,
    model_delete_at timestamptz DEFAULT CURRENT_TIMESTAMP,
