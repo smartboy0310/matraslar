@@ -8,6 +8,8 @@ class ProModel extends PG {
                *
          FROM
                model_matras
+          WHERE 
+               model_is_delete = false
       `)
    }
    ADD_MODEL(model_name) {
