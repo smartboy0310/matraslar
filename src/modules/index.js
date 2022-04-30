@@ -17,7 +17,7 @@ router
       .get('/products', Products.GET_PRO)
       .post('/addProduct', uploadImg.array("images"), Products.POST_PRO)
       .put('/updateProduct',uploadImg.array("images"), Products.PUT_PRO)
-      .delete('/DeleteProducts', Products.DELETE_PRO)
+      .delete('/deleteProducts', Products.DELETE_PRO)
       .put('/editStatus', Products.PUT_STATUS)
 
       .get('/model', Model.GET_MODEL)
