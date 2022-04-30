@@ -6,7 +6,7 @@ const PORT = process.env.PORT
 const cors = require('cors')
 const router = require('./modules')
 
-app.set(cors())
+app.use(cors())
 app.use(express.json())
 app.use('/public', express.static(path.resolve(__dirname, '../public')))
 app.use(router)
