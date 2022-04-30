@@ -83,10 +83,13 @@ module.exports = {
 			} = req.body;
 
 			const old_pro_image = await model.SELECTED__PRO(pro_id)
-			if (!imgFile) {
-				pro_images = old_pro_image
+			console.log(old_pro_image.pro_images, imgFile);
+			if (!imgFile.length) {
+				old_pro_image.pro_images.map((e) =>{
+					pro_images.push(e)
+				})
 			}
-
+			console.log(pro_images);
 			res.json(
 				await model.UPDATE_PRO(
 					pro_id - 0,

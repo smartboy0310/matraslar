@@ -14,7 +14,7 @@ class Products extends PG {
       SELECTED__PRO(pro_id) {
             return this.fetch(`
             SELECT 
-               *
+                  pro_images
             FROM
                products
             WHERE 
