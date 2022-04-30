@@ -117,7 +117,6 @@ module.exports = {
 	DELETE_PRO: async (req, res) => {
 		try {
 			const { pro_id, pro_is_delete } = req.body;
-			console.log(pro_id, pro_is_delete);
 			res.json(await model.DELETE_PRO(pro_id, pro_is_delete));
 		} catch (error) {
 			res.json({
