@@ -14,7 +14,7 @@ class ProModel extends PG {
    }
    ADD_MODEL(model_name) {
       return this.fetch(`
-         INSTER INTO
+      INSERT INTO
                      model_matras (
                         model_name
                      )
