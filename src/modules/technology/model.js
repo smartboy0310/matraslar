@@ -43,7 +43,7 @@ class Technology extends PG {
          UPDATE 
                technology 
          SET   
-               tech_delete_at = CURRENT_TIMESTAMP
+               tech_delete_at = CURRENT_TIMESTAMP,
                tech__is_delete= $2
          WHERE 
                tech__id = $1
