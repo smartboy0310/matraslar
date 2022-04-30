@@ -13,8 +13,8 @@ module.exports = {
    },
    POST_MODEL: async(req, res) => {
       try {
-         const { name } = req.body
-            res.json(await model.ADD_MODEL( name))         
+         const { model_name } = req.body
+            res.json(await model.ADD_MODEL( model_name))         
       } catch (error) {
          res.json({
             status: 500,

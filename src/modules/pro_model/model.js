@@ -16,7 +16,7 @@ class ProModel extends PG {
       return this.fetch(`
          INSTER INTO
                      model_matras (
-                        name
+                        model_name
                      )
          VALUES   (
                      $1
