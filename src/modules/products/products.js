@@ -34,9 +34,7 @@ module.exports = {
 				model_id,
 			} = req.body;
 
-			if (pro_share_price == undefined) {
-				pro_share_price = 0
-			}
+			
 			res.json(
 				await model.ADD_PRO(
 					pro_name,
@@ -45,7 +43,7 @@ module.exports = {
 					pro_format,
 					pro_guarantee,
 					pro_size,
-					pro_share_price,
+					pro_share_price - 0,
 					pro_info,
 					pro_new,
 					pro_active,
@@ -68,6 +66,7 @@ module.exports = {
 			imgFile.map((e) => {
 			pro_images.push(e.path);
 			});
+			
 			const {
 				pro_id,
 				pro_name,
@@ -82,16 +81,22 @@ module.exports = {
 				pro_active,
 				model_id,
 			} = req.body;
+
+			const old_pro_image = await model.SELECTED__PRO(pro_id)
+			if (!imgFile) {
+				pro_images = old_pro_image
+			}
+
 			res.json(
 				await model.UPDATE_PRO(
-					pro_id,
+					pro_id - 0,
 					pro_name,
-					pro_price,
-					pro_particle,
+					pro_price - 0,
+					pro_particle - 0,
 					pro_format,
 					pro_guarantee,
 					pro_size,
-					pro_share_price,
+					pro_share_price - 0,
 					pro_info,
 					pro_new,
 					pro_active,

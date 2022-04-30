@@ -11,6 +11,16 @@ class Products extends PG {
                pro_is_delete = false
       `);
 	}
+      SELECTED__PRO(pro_id) {
+            return this.fetch(`
+            SELECT 
+               *
+            FROM
+               products
+            WHERE 
+               pro_id = $1
+            `, pro_id)
+      }
 	ADD_PRO(pro_name, pro_price, pro_particle, pro_format, pro_guarantee, pro_size, pro_share_price, pro_info, pro_new, pro_active, pro_images, pro_is_delete, model_id) {
 		return this.fetch(`      
       INSERT INTO
@@ -43,7 +53,7 @@ class Products extends PG {
                      pro_format = $5, 
                      pro_guarantee = $6, 
                      pro_size = $7, 
-                     pro_share_price = $8
+                     pro_share_price = $8,
                      pro_info = $9, 
                      pro_new = $10,
                      pro_active = $11,
