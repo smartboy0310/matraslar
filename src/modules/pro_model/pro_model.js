@@ -24,8 +24,8 @@ module.exports = {
    },
    PUT_MODEL: async(req, res) => {
       try {
-         const { id, name } = req.body
-         res.json(await model.UPDATE_MODEL(id, name))        
+         const { model_id, model_name } = req.body
+         res.json(await model.UPDATE_MODEL(model_id, model_name))        
       } catch (error) {
          res.json({
             status: 500,

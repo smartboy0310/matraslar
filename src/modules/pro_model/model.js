@@ -41,7 +41,7 @@ class ProModel extends PG {
       UPDATE 
             model_matras
       SET
-            model_delete_at = CURRENT_TIMESTAMP
+            model_delete_at = CURRENT_TIMESTAMP,
             model_is_delete = $2
       WHERE 
             model_id = $1

@@ -31,7 +31,7 @@ class Orders extends PG {
          UPDATE 
                technology 
          SET   
-               order_delete_at = CURRENT_TIMESTAMP
+               order_delete_at = CURRENT_TIMESTAMP,
                order__is_delete= $2
          WHERE 
                order__id = $1
