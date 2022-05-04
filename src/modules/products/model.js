@@ -4,9 +4,26 @@ class Products extends PG {
 	ALL_PRO() {
 		return this.fetchAll(`
          SELECT 
-               *
+                  p.pro_name, 
+                  p.pro_price, 
+                  p.pro_particle, 
+                  p.pro_format, 
+                  p.pro_guarantee, 
+                  p.pro_size, 
+                  p.pro_share_price,
+                  p.pro_info, 
+                  p.pro_new,
+                  p.pro_active,
+                  p.pro_images,
+                  p.pro_is_delete, 
+                  p.model_id,
+                  m.model_id,
+                  m.model_name            
          FROM
-               products
+               products p
+         INNER JOIN 
+               model_matras m
+         USING (model_id)
          WHERE 
                pro_is_delete = false
       `);

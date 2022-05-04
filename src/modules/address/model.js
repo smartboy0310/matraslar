@@ -52,6 +52,16 @@ class Address  extends PG {
          RETURNING * 
       `, add_id, add_is_delete)
    }
+   SELECTED__ADDRESS(add_id) {
+      return this.fetch(`
+      SELECT 
+            add_image
+      FROM
+            address
+      WHERE 
+         add_id = $1
+      `, add_id)
+}
 }
 
 module.exports = new Address 

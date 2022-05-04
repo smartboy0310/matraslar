@@ -35,6 +35,14 @@ module.exports = {
 			add_image.push(e.path);
 			});
          const { add_id, add_name, add_intended, add_loc } = req.body
+
+         const old_add_image = await model.SELECTED__ADDRESS(add_id)
+			
+			if (!imgFile.length) {
+				old_add_image.add_image.map((e) =>{
+					add_image.push(e)
+				})
+			}
          res.json(await model.UPDATE_ADDRESS(add_id, add_name, add_intended, add_loc, add_image))        
       } catch (error) {
          res.json({
