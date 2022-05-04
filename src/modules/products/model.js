@@ -4,6 +4,7 @@ class Products extends PG {
 	ALL_PRO() {
 		return this.fetchAll(`
          SELECT 
+                  p.pro_id
                   p.pro_name, 
                   p.pro_price, 
                   p.pro_particle, 
