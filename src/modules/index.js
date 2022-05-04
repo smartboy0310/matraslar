@@ -41,9 +41,9 @@ router
       .delete('/deleteCustomer', Customers.DELETE_CUSTOMERS)
 
       .get('/technology', Technology.GET_TECHNOLOGY)
-      .post('/addCustomer', Technology.POST_TECHNOLOGY)
-      .put('/updateCustomer', Technology.PUT_TECHNOLOGY)
-      .delete('/deleteCustomer', Technology.DELETE_TECHNOLOGY)
+      .post('/addTechnology', Technology.POST_TECHNOLOGY)
+      .put('/updatdTechnology', Technology.PUT_TECHNOLOGY)
+      .delete('/deletdTechnology', Technology.DELETE_TECHNOLOGY)
 
       .get('/address', Address.GET_ADDRESS)
       .post('/addAddress', uploadImg.array("images"),  Address.POST_ADDRESS)
