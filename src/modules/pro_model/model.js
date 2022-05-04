@@ -25,16 +25,17 @@ class ProModel extends PG {
       `, model_name)
    }
   
-   UPDATE_MODEL(model_id, model_name) {
+   UPDATE_MODEL(model_id, model_name, model_active) {
       return this.fetch(`
       UPDATE 
             model_matras
       SET
-            model_name = $2
+            model_name = $2, 
+            model_active = $3
       WHERE 
             model_id = $1
       RETURNING *
-      `, model_id, model_name)
+      `, model_id, model_name, model_active)
    }
    DELETE_MODEL(model_id, model_is_delete) {
       return this.fetch(`
