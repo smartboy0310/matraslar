@@ -43,7 +43,7 @@ router
       .get('/technology', Technology.GET_TECHNOLOGY)
       .post('/addTechnology', uploadImg.single('image'), Technology.POST_TECHNOLOGY)
       .put('/updateTechnology', uploadImg.single('image'), Technology.PUT_TECHNOLOGY)
-      .delete('/deletdTechnology', Technology.DELETE_TECHNOLOGY)
+      .delete('/deleteTechnology', Technology.DELETE_TECHNOLOGY)
 
       .get('/address', Address.GET_ADDRESS)
       .post('/addAddress', uploadImg.array("images"),  Address.POST_ADDRESS)
