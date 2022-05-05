@@ -37,7 +37,7 @@ module.exports = {
 	PUT_TECHNOLOGY: async (req, res) => {
 		try {
 			const imgLink = req.file;
-			const tech_image = imgLink.path;
+			const tech_image = imgLink[0].path;
 
 			const {
 				tech_id,
@@ -48,7 +48,7 @@ module.exports = {
 				tech_active,
 			} = req.body;
 			if (!imgLink) {
-				tech_image = await model.SELECTED__TECHNOLOGY(tech_id);
+				tech_image = await model.SELECTED__TECHNOLOGY(tech_id).tech_image;
 			}
 			res.json(
 				await model.UPDATE_TECHNOLOGY(

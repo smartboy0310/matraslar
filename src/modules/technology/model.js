@@ -14,7 +14,7 @@ class Technology extends PG {
    SELECTED__TECHNOLOGY(tech_id) {
       return this.fetch(`
       SELECT 
-            tech_images
+            tech_image
       FROM
          technology
       WHERE 
