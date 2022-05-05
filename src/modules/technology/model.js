@@ -11,7 +11,17 @@ class Technology extends PG {
                tech_is_delete = false
       `)
    }
-   ADD_TECHNOLOGY (tech_name, tech_title, tech_link, tech_new, tech_active) {
+   SELECTED__TECHNOLOGY(tech_id) {
+      return this.fetch(`
+      SELECT 
+            tech_images
+      FROM
+         technology
+      WHERE 
+         tech_id = $1
+      `, tech_id)
+}
+   ADD_TECHNOLOGY (tech_name, tech_title, tech_link, tech_new, tech_active, tech_image) {
       return this.fetch(`
          INSERT INTO
                      technology (
@@ -19,15 +29,16 @@ class Technology extends PG {
                         tech_title,
                         tech_link, 
                         tech_new, 
-                        tech_active
+                        tech_active, 
+                        tech_image
                         )
          VALUES      (
-                        $1, $2, $3, $4, $5
+                        $1, $2, $3, $4, $5, $6
                      )
          RETURNING *          
-      `, tech_name, tech_title, tech_link, tech_new, tech_active)
+      `, tech_name, tech_title, tech_link, tech_new, tech_active, tech_image)
    }
-    UPDATE_TECHNOLOGY(tech_id, tech_name, tech_title, tech_link) {
+    UPDATE_TECHNOLOGY(tech_id, tech_name, tech_title, tech_link, tech_new, tech_active, tech_image) {
       return this.fetch(`
          UPDATE 
                technology 
@@ -36,11 +47,12 @@ class Technology extends PG {
                   tech_title = $3,
                   tech_link = $4, 
                   tech_new = $5,
-                  tech_active = $6
+                  tech_active = $6, 
+                  tech_image = $7
          WHERE 
                tech_id = $1
          RETURNING * 
-      `,tech_id, tech_name, tech_title, tech_link)
+      `,tech_id, tech_name, tech_title, tech_link, tech_new, tech_active, tech_image)
    }
    DELETE_TECHNOLOGY(tech__id, tech__is_delete) {
       return this.fetch(`

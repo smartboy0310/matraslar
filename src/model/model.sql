@@ -78,6 +78,7 @@ CREATE TABLE technology (
    tech_link text not null,
    tech_new boolean DEFAULT true,
    tech_active boolean DEFAULT true,
+   tech_image text not null,
    tech_create_at timestamptz DEFAULT CURRENT_TIMESTAMP,
    tech_delete_at timestamptz DEFAULT CURRENT_TIMESTAMP,
    tech_is_delete boolean DEFAULT false
