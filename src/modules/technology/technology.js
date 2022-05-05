@@ -47,8 +47,9 @@ module.exports = {
 				tech_new,
 				tech_active,
 			} = req.body;
+         const old_tech_image = await model.SELECTED__TECHNOLOGY(tech_id)
 			if (!imgLink) {
-				tech_image = await model.SELECTED__TECHNOLOGY(tech_id).tech_image;
+				tech_image = old_tech_image.tech_image;
 			}
 			res.json(
 				await model.UPDATE_TECHNOLOGY(
