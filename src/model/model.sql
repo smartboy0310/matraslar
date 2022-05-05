@@ -6,7 +6,7 @@ CREATE TABLE admin (
 
 CREATE TABLE model_matras (
    model_id bigserial PRIMARY KEY,
-       varchar(32) not null,
+   model_name varchar(32) not null,
    model_active boolean DEFAULT true,
    model_create_at timestamptz DEFAULT CURRENT_TIMESTAMP,
    model_delete_at timestamptz DEFAULT CURRENT_TIMESTAMP,
@@ -76,6 +76,8 @@ CREATE TABLE technology (
    tech_name varchar(32) not null,
    tech_title varchar(256) not null,
    tech_link text not null,
+   tech_new boolean DEFAULT true,
+   tech_active boolean DEFAULT true,
    tech_create_at timestamptz DEFAULT CURRENT_TIMESTAMP,
    tech_delete_at timestamptz DEFAULT CURRENT_TIMESTAMP,
    tech_is_delete boolean DEFAULT false

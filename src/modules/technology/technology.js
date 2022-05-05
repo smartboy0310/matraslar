@@ -13,8 +13,8 @@ module.exports = {
    },
    POST_TECHNOLOGY: async(req, res) => {
       try {
-         const { tech_name, tech_title, tech_link } = req.body
-            res.json(await model.ADD_TECHNOLOGY( tech_name, tech_title, tech_link))         
+         const { tech_name, tech_title, tech_link, tech_new, tech_active } = req.body
+            res.json(await model.ADD_TECHNOLOGY( tech_name, tech_title, tech_link, tech_new, tech_active))         
       } catch (error) {
          res.json({
             status: 500,
@@ -24,8 +24,8 @@ module.exports = {
    },
    PUT_TECHNOLOGY: async(req, res) => {
       try {
-         const { tech_id, tech_name, tech_title, tech_link } = req.body
-         res.json(await model.UPDATE_TECHNOLOGY(tech_id, tech_name, tech_title, tech_link))        
+         const { tech_id, tech_name, tech_title, tech_link, tech_new, tech_active } = req.body
+         res.json(await model.UPDATE_TECHNOLOGY(tech_id, tech_name, tech_title, tech_link, tech_new, tech_active))        
       } catch (error) {
          res.json({
             status: 500,

@@ -11,19 +11,21 @@ class Technology extends PG {
                tech_is_delete = false
       `)
    }
-   ADD_TECHNOLOGY (tech_name, tech_title, tech_link) {
+   ADD_TECHNOLOGY (tech_name, tech_title, tech_link, tech_new, tech_active) {
       return this.fetch(`
          INSERT INTO
                      technology (
                         tech_name,
                         tech_title,
-                        tech_link
+                        tech_link, 
+                        tech_new, 
+                        tech_active
                         )
          VALUES      (
-                        $1, $2, $3
+                        $1, $2, $3, $4, $5
                      )
          RETURNING *          
-      `, tech_name, tech_title, tech_link)
+      `, tech_name, tech_title, tech_link, tech_new, tech_active)
    }
     UPDATE_TECHNOLOGY(tech_id, tech_name, tech_title, tech_link) {
       return this.fetch(`
@@ -32,7 +34,9 @@ class Technology extends PG {
          SET   
                   tech_name = $2, 
                   tech_title = $3,
-                  tech_link = $4
+                  tech_link = $4, 
+                  tech_new = $5,
+                  tech_active = $6
          WHERE 
                tech_id = $1
          RETURNING * 
