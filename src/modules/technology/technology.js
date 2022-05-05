@@ -50,8 +50,9 @@ module.exports = {
 
 			if (!imgLink) {
 				tech_image = old_tech_image.tech_image;
-			} 
+			} else {
 				tech_image = imgLink.path;
+			}
 			res.json(
 				await model.UPDATE_TECHNOLOGY(
 					tech_id,
