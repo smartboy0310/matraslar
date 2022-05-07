@@ -10,7 +10,7 @@ module.exports = {
 				res.json({
 					token: sign({ id: foundAdmin.id })
 				});
-				res.cookie('token', sign({ id: foundAdmin.id }))
+				//res.cookie('token', sign({ id: foundAdmin.id }))
 			} else {
 				res.json({
 						status: 401,

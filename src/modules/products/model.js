@@ -4,29 +4,44 @@ class Products extends PG {
 	ALL_PRO() {
 		return this.fetchAll(`
          SELECT 
-                  p.pro_id,
-                  p.pro_name, 
-                  p.pro_price, 
-                  p.pro_particle, 
-                  p.pro_format, 
-                  p.pro_guarantee, 
-                  p.pro_size, 
-                  p.pro_share_price,
-                  p.pro_info, 
-                  p.pro_new,
-                  p.pro_active,
-                  p.pro_images,
-                  p.pro_is_delete, 
-                  p.model_id,
-                  m.model_id,
-                  m.model_name            
+            p.pro_name, 
+            p.pro_price, 
+            p.pro_particle, 
+            p.pro_format, 
+            p.pro_guarantee, 
+            p.pro_size, 
+            p.pro_share_price,
+            p.pro_info, 
+            p.pro_new,
+            p.pro_active,
+            p.pro_images,
+            p.pro_is_delete, 
+            p.pro_id,
+            p.model_id,
+            m.model_name            
          FROM
                products p
          INNER JOIN 
                model_matras m
          USING (model_id)
-         WHERE 
-               pro_is_delete = false
+         GROUP BY 
+            p.pro_name,
+            p.pro_price,
+            p.pro_particle, 
+            p.pro_format, 
+            p.pro_guarantee, 
+            p.pro_size, 
+            p.pro_share_price,
+            p.pro_info, 
+            p.pro_new,
+            p.pro_active,
+            p.pro_images,
+            p.pro_is_delete,
+            p.pro_id,
+            m.model_id,
+            m.model_name  
+         Having
+            p.pro_is_delete = false
       `);
 	}
       SELECTED__PRO(pro_id) {
@@ -39,27 +54,25 @@ class Products extends PG {
                pro_id = $1
             `, pro_id)
       }
-	ADD_PRO(pro_name, pro_price, pro_particle, pro_format, pro_guarantee, pro_size, pro_share_price, pro_info, pro_new, pro_active, pro_images, pro_is_delete, model_id) {
+	ADD_PRO(pro_name, pro_price, pro_particle, pro_format, pro_guarantee, pro_size, pro_share_price, pro_info, pro_new, pro_active, pro_images,  model_id) {
 		return this.fetch(`      
       INSERT INTO
-                  products 
-                  (  pro_name, 
-                     pro_price, 
-                     pro_particle, 
-                     pro_format, 
-                     pro_guarantee, 
-                     pro_size, 
-                     pro_share_price,
-                     pro_info, 
-                     pro_new,
-                     pro_active,
-                     pro_images,
-                     pro_is_delete, 
-                     model_id )
-      VALUES
-            ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)  
+            products 
+                  (pro_name, 
+                  pro_price, 
+                  pro_particle, 
+                  pro_format, 
+                  pro_guarantee, 
+                  pro_size, 
+                  pro_info, 
+                  pro_new,
+                  pro_active,
+                  pro_images,
+                  model_id )
+             VALUES
+                  ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)  
       RETURNING *       
-      `, pro_name, pro_price, pro_particle, pro_format, pro_guarantee, pro_size,  pro_share_price, pro_info, pro_new, pro_active, pro_images, pro_is_delete, model_id);
+      `, pro_name, pro_price, pro_particle, pro_format, pro_guarantee, pro_size,  pro_info, pro_new, pro_active, pro_images, model_id);
 	}
    UPDATE_PRO(pro_id, pro_name, pro_price, pro_particle, pro_format, pro_guarantee, pro_size,  pro_share_price, pro_info, pro_new, pro_active, pro_images, model_id) {
 		return this.fetch(`      

@@ -28,14 +28,12 @@ module.exports = {
 				pro_size,
 				pro_share_price,
 				pro_info,
-				pro_new,
-				pro_active,
-				pro_is_delete,
 				model_id,
 			} = req.body;
 
+			const pro_active = req.body.pro_active ? true : false;
+			const pro_new = req.body.pro_new ? true : false;
 			
-			res.json(
 				await model.ADD_PRO(
 					pro_name,
 					pro_price - 0,
@@ -48,10 +46,10 @@ module.exports = {
 					pro_new,
 					pro_active,
 					pro_images,
-					pro_is_delete,
 					model_id - 0,
 				),
-			);
+				res.redirect(`${process.env.FRONT_URL}/matras-admin/admin/products`)
+
 		} catch (error) {
 			res.json({
 				status: 500,
@@ -66,7 +64,6 @@ module.exports = {
 			imgFile.map((e) => {
 			pro_images.push(e.path);
 			});
-			
 			const {
 				pro_id,
 				pro_name,
@@ -85,12 +82,12 @@ module.exports = {
 			const old_pro_image = await model.SELECTED__PRO(pro_id)
 			
 			if (!imgFile.length) {
-				old_pro_image.pro_images.map((e) =>{
+				old_pro_image?.pro_images.map((e) =>{
 					pro_images.push(e)
 				})
 			}
 			
-			res.json(
+		
 				await model.UPDATE_PRO(
 					pro_id - 0,
 					pro_name,
@@ -105,8 +102,11 @@ module.exports = {
 					pro_active,
 					pro_images,
 					model_id,
-				),
-			);
+				)
+
+				res.redirect(`${process.env.FRONT_URL}/matras-admin/admin/products`)
+
+			
 		} catch (error) {
 			res.json({
 				status: 500,
@@ -128,7 +128,9 @@ module.exports = {
 	PUT_STATUS: async (req, res) => {
 		try {
 			const { pro_id, pro_active } = req.body;
-			res.json(await model.EDIT_STATUS(pro_id, pro_active));
+
+			await model.EDIT_STATUS(pro_id, pro_active)
+			res.redirect(`${process.env.FRONT_URL}/matras-admin/admin/products`)
 		} catch (error) {
 			res.json({
 				status: 500,

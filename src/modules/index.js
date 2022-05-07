@@ -15,39 +15,42 @@ const uploadImg = require('../middleware/multer')
 
 router 
       .post('/admin', Admin.LOGIN)
-      .get('/products', Products.GET_PRO)
-      .post('/addProduct', uploadImg.array("images"), Products.POST_PRO)
-      .put('/updateProduct',uploadImg.array("images"), Products.PUT_PRO)
-      .delete('/deleteProduct', Products.DELETE_PRO)
       .put('/editStatus', Products.PUT_STATUS)
+      .get('/product', Products.GET_PRO)
+      .post('/product', uploadImg.array("images"), Products.POST_PRO)
+      .post('/products',uploadImg.array("images"), Products.PUT_PRO)
+      .delete('/product', Products.DELETE_PRO)
+
 
       .get('/model', Model.GET_MODEL)
-      .post('/addModel', Model.POST_MODEL)
-      .put('/updateModel', Model.PUT_MODEL)
-      .delete('/deleteModel', Model.DELETE_MODEL)
+      .post('/model', Model.POST_MODEL)
+      .put('/model', Model.PUT_MODEL)
+      .delete('/model', Model.DELETE_MODEL)
 
       .get('/carusel',Carusel.GET_CARUSEL)
+      .post('/carusel', uploadImg.single("image"), Carusel.POST_CARUSEL)
 
       .get('/generel', Generel.GET_GENEREL) 
+      .post('/generel', Generel.POST_GENEREL)
 
-      .get('/orders', Orders.GET_ORDERS)
-      .post('/addOrder', Orders.POST_ORDER)
-      .put('/updateOrder', Orders.PUT_FEEDBACK)
-      .delete('/deleteOrder', Orders.DELETE_ORDER)
+      .get('/order', Orders.GET_ORDERS)
+      .post('/order', uploadImg.single("img"),Orders.POST_ORDER)
+      .put('/order', Orders.PUT_FEEDBACK)
+      .delete('/order', Orders.DELETE_ORDER)
 
-      .get('/customers', Customers.GET_CUSTOMERS)
-      .post('/addCustomer', Customers.POST_CUSTOMERS)
-      .put('/updateCustomer', Customers.PUT_FEEDBACK)
-      .delete('/deleteCustomer', Customers.DELETE_CUSTOMERS)
+      .get('/customer', Customers.GET_CUSTOMERS)
+      .post('/customer', Customers.POST_CUSTOMERS)
+      .put('/customer', Customers.PUT_FEEDBACK)
+      .delete('/customer', Customers.DELETE_CUSTOMERS)
 
       .get('/technology', Technology.GET_TECHNOLOGY)
-      .post('/addTechnology', uploadImg.single('image'), Technology.POST_TECHNOLOGY)
-      .put('/updateTechnology', uploadImg.single('image'), Technology.PUT_TECHNOLOGY)
-      .delete('/deleteTechnology', Technology.DELETE_TECHNOLOGY)
+      .post('/technology', uploadImg.single("tech_image"), Technology.POST_TECHNOLOGY)
+      .post('/technologies', uploadImg.single("tech_image"), Technology.PUT_TECHNOLOGY)
+      .delete('/technology', Technology.DELETE_TECHNOLOGY)
 
       .get('/address', Address.GET_ADDRESS)
-      .post('/addAddress', uploadImg.array("images"),  Address.POST_ADDRESS)
-      .put('/updateAddress', uploadImg.array("images"), Address.PUT_ADDRESS)
-      .delete('/deleteAddress', Address.DELETE_ADDRESS)
+      .post('/address', uploadImg.array("images"),  Address.POST_ADDRESS)
+      .post('/address-update', uploadImg.array("images"), Address.PUT_ADDRESS)
+      .delete('/address', Address.DELETE_ADDRESS)
 
 module.exports = router

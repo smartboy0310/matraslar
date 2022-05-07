@@ -15,7 +15,7 @@ class Customers extends PG {
       return this.fetch(`
          INSERT INTO
                      customers (
-                        cust_phone,
+                        cust_phone
                         )
          VALUES      (
                         $1
@@ -28,7 +28,7 @@ class Customers extends PG {
          UPDATE 
                customers 
          SET   
-               cust_feedbac = $2
+               cust_feedback = $2
          WHERE 
                cust_id = $1
          RETURNING * 

@@ -89,6 +89,7 @@ CREATE TABLE address (
    add_name varchar(128) not null,
    add_intended varchar(256) not null,
    add_loc varchar(256) not null,
+   add_active boolean DEFAULT true,
    add_image text[] not null,
    add_create_at timestamptz DEFAULT CURRENT_TIMESTAMP,
    add_delete_at timestamptz DEFAULT CURRENT_TIMESTAMP,
