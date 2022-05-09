@@ -1,5 +1,5 @@
 const model = require('./model');
-
+require('dotenv').config()
 module.exports = {
 	GET_TECHNOLOGY: async (_, res) => {
 		try {
@@ -14,7 +14,7 @@ module.exports = {
 	POST_TECHNOLOGY: async (req, res) => {
 		try {
 			const imgLink = req.file;
-			const tech_image = imgLink.path;
+			const tech_image = imgLink.originalname
 			const { tech_name, tech_title, tech_link, tech_new, tech_active } =
 			req.body;
 			await model.ADD_TECHNOLOGY(
@@ -52,7 +52,7 @@ module.exports = {
 					if (!imgLink) {
 						tech_image = old_tech_image.tech_image;
 					} else {
-						tech_image = imgLink.path;
+						tech_image = imgLink.originalname;
 					}
 					
 					await model.UPDATE_TECHNOLOGY(
