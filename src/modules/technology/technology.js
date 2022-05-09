@@ -78,7 +78,10 @@ module.exports = {
 						try {
 							const { tech_id, tech_is_delete } = req.body;
 							await model.DELETE_TECHNOLOGY(tech_id, tech_is_delete)
-							res.redirect(`${process.env.FRONT_URL}/matras-admin/admin/technologies`)
+							res.json({
+								status: 200,
+								message: 'Ok',
+							})
 						} catch (error) {
 							res.json({
 								status: 500,

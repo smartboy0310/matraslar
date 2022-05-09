@@ -130,7 +130,10 @@ module.exports = {
 			const { pro_id, pro_active } = req.body;
 
 			await model.EDIT_STATUS(pro_id, pro_active)
-			res.redirect(`${process.env.FRONT_URL}/matras-admin/admin/products`)
+			res.json({
+				status: 200,
+				message: 'Ok',
+			})
 		} catch (error) {
 			res.json({
 				status: 500,
