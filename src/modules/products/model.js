@@ -64,15 +64,16 @@ class Products extends PG {
                   pro_format, 
                   pro_guarantee, 
                   pro_size, 
+                  pro_share_price,
                   pro_info, 
                   pro_new,
                   pro_active,
                   pro_images,
                   model_id )
              VALUES
-                  ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)  
+                  ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11. $12)  
       RETURNING *       
-      `, pro_name, pro_price, pro_particle, pro_format, pro_guarantee, pro_size,  pro_info, pro_new, pro_active, pro_images, model_id);
+      `, pro_name, pro_price, pro_particle, pro_format, pro_guarantee, pro_size, pro_share_price, pro_info, pro_new, pro_active, pro_images, model_id);
 	}
    UPDATE_PRO(pro_id, pro_name, pro_price, pro_particle, pro_format, pro_guarantee, pro_size,  pro_share_price, pro_info, pro_new, pro_active, pro_images, model_id) {
 		return this.fetch(`      
