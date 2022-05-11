@@ -11,6 +11,17 @@ class Customers extends PG {
                cust_is_delete = false
       `)
    }
+   SEARCH_CUSTOMERS (search_data) {
+         return this.fetchAll(`
+         SELECT 
+                  *
+         FROM
+               customers
+         WHERE 
+         cust_is_delete = false AND cust_phone LIKE $1
+         
+`, search_data)
+   }
    ADD_CUSTOMERS (cust_phone ) {
       return this.fetch(`
          INSERT INTO

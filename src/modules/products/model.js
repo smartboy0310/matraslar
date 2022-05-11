@@ -42,17 +42,38 @@ class Products extends PG {
             m.model_name  
          Having
             p.pro_is_delete = false
+         ORDER BY
+            p.pro_id
       `);
 	}
-      SELECTED__PRO(pro_id) {
-            return this.fetch(`
+      SEARCH_PRO (search_data) {
+            return this.fetchAll(`
             SELECT 
-                  pro_images
-            FROM
-               products
-            WHERE 
-               pro_id = $1
-            `, pro_id)
+            p.pro_name, 
+            p.pro_price, 
+            p.pro_particle, 
+            p.pro_format, 
+            p.pro_guarantee, 
+            p.pro_size, 
+            p.pro_share_price,
+            p.pro_info, 
+            p.pro_new,
+            p.pro_active,
+            p.pro_images,
+            p.pro_is_delete, 
+            p.pro_id,
+            p.model_id,
+            m.model_name            
+         FROM
+               products p
+         INNER JOIN 
+               model_matras m
+         USING (model_id)          
+         WHERE
+         p.pro_is_delete = false AND (p.pro_name LIKE $1 OR m.model_name LIKE $1)
+         ORDER BY
+             p.pro_id 
+      `, search_data)
       }
 	ADD_PRO(pro_name, pro_price, pro_particle, pro_format, pro_guarantee, pro_size, pro_share_price, pro_info, pro_new, pro_active, pro_images,  model_id) {
 		return this.fetch(`      

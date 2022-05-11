@@ -2,9 +2,15 @@ const model = require('./model')
 const generelModel = require('../generel/model')
 
 module.exports = {
-   GET_ORDERS: async(_, res) => {
+   GET_ORDER: async(req, res) => {
       try {
-         res.json(await model.ALL_ORDERS())         
+         const {search_data} = req.body
+			if(search_data) {
+				res.json(await model.SEARCH_ORDER(`%${search_data}%`))
+			}
+			else{
+				res.json(await model.ALL_ORDER());
+			}         
       } catch (error) {
          res.json({
             status: 500,

@@ -1,9 +1,15 @@
 const model = require('./model')
 
 module.exports = {
-   GET_CUSTOMERS: async (_, res) => {
+   GET_CUSTOMERS: async (req, res) => {
       try {
-         res.json(await model.ALL_CUSTOMERS())         
+         const {search_data} = req.body
+         if(search_data) {
+            res.json(await model.SEARCH_CUSTOMERS(`%${search_data}%`))
+         }
+         else{
+            res.json(await model.ALL_CUSTOMERS())
+         }         
       } catch (error) {
          res.json({
             status: 500,

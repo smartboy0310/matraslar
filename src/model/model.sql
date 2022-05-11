@@ -56,8 +56,9 @@ CREATE TABLE orders (
    user_phone varchar(32) not null,
    order_pro_name varchar(64) not null,
    order_count int not null,
+   order_is_delete boolean DEFAULT false,
    order_create_at timestamptz DEFAULT CURRENT_TIMESTAMP,
-   order__delete_at timestamptz DEFAULT CURRENT_TIMESTAMP,
+   order_delete_at timestamptz DEFAULT CURRENT_TIMESTAMP,
    order_feedback boolean DEFAULT false
 );
 

@@ -33,7 +33,7 @@ router
       .get('/generel', Generel.GET_GENEREL) 
       .post('/generel', Generel.POST_GENEREL)
 
-      .get('/order', Orders.GET_ORDERS)
+      .get('/order', Orders.GET_ORDER)
       .post('/order', uploadImg.single("img"),Orders.POST_ORDER)
       .put('/order', Orders.PUT_FEEDBACK)
       .delete('/order', Orders.DELETE_ORDER)

@@ -1,9 +1,15 @@
 const model = require('./model');
 
 module.exports = {
-	GET_PRO: async (_, res) => {
+	GET_PRO: async (req, res) => {
 		try {
-			res.json(await model.ALL_PRO());
+			const {search_data} = req.body
+			if(search_data) {
+				res.json(await model.SEARCH_PRO(`%${search_data}%`))
+			}
+			else{
+				res.json(await model.ALL_PRO());
+			}
 		} catch (error) {
 			res.json({
 				status: 500,

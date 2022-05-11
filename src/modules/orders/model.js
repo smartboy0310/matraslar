@@ -1,15 +1,26 @@
 const PG = require('../../lib/Postgres/postgres')
 
 class Orders extends PG {
-   ALL_ORDERS () {
+   ALL_ORDER () {
       return this.fetchAll(`
          SELECT 
                *
          FROM
                orders
+         WHERE 
+         order_is_delete = false
       `)
    }
-   
+   SEARCH_ORDER (search_data) {
+      return this.fetchAll(`
+         SELECT 
+               *
+         FROM
+               orders
+         WHERE 
+         order_is_delete = false AND (user_name LIKE $1 OR order_pro_name LIKE $1)
+      `, search_data)
+   }
    ADD_ORDER (user_name, user_phone, order_pro_name, order_count ) {
       return this.fetch(`
          INSERT INTO
@@ -26,17 +37,17 @@ class Orders extends PG {
       `, user_name, user_phone, order_pro_name, order_count)
    }
 
-   DELETE_ORDER(order__id, order__is_delete) {
+   DELETE_ORDER(order_id, order_is_delete) {
       return this.fetch(`
          UPDATE 
                technology 
          SET   
                order_delete_at = CURRENT_TIMESTAMP,
-               order__is_delete= $2
+               order_is_delete= $2
          WHERE 
-               order__id = $1
+               order_id = $1
          RETURNING * 
-      `, order__id, order__is_delete)
+      `, order_id, order_is_delete)
    }
 
    COUNT_FEEDBACK() {
