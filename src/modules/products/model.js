@@ -46,6 +46,7 @@ class Products extends PG {
             p.pro_id
       `);
 	}
+      
       SEARCH_PRO (search_data) {
             return this.fetchAll(`
             SELECT 
@@ -74,6 +75,16 @@ class Products extends PG {
          ORDER BY
              p.pro_id 
       `, search_data)
+      }
+      SELECTED__PRO(pro_id) {
+            return this.fetch(`
+            SELECT 
+                  pro_images
+            FROM
+               products
+            WHERE 
+               pro_id = $1
+            `, pro_id)
       }
 	ADD_PRO(pro_name, pro_price, pro_particle, pro_format, pro_guarantee, pro_size, pro_share_price, pro_info, pro_new, pro_active, pro_images,  model_id) {
 		return this.fetch(`      
