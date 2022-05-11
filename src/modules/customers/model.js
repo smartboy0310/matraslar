@@ -9,6 +9,8 @@ class Customers extends PG {
                customers
          WHERE 
                cust_is_delete = false
+         ORDER BY
+               cust_id DESC
       `)
    }
    SEARCH_CUSTOMERS (search_data) {
@@ -18,8 +20,9 @@ class Customers extends PG {
          FROM
                customers
          WHERE 
-         cust_is_delete = false AND cust_phone LIKE $1
-         
+               cust_is_delete = false AND cust_phone LIKE $1
+         ORDER BY
+               cust_id DESC         
 `, search_data)
    }
    ADD_CUSTOMERS (cust_phone ) {

@@ -9,6 +9,8 @@ class Address  extends PG {
                address
          WHERE 
                add_is_delete = false
+         ORDER BY
+               add_id DESC
       `)
    }
    ADD_ADDRESS (add_name, add_intended, add_loc, add_image, add_active) {

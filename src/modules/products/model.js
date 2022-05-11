@@ -43,7 +43,7 @@ class Products extends PG {
          Having
             p.pro_is_delete = false
          ORDER BY
-            p.pro_id
+            p.pro_id DESC
       `);
 	}
       
@@ -73,7 +73,7 @@ class Products extends PG {
          WHERE
          p.pro_is_delete = false AND (p.pro_name LIKE $1 OR m.model_name LIKE $1)
          ORDER BY
-             p.pro_id 
+             p.pro_id DESC
       `, search_data)
       }
       SELECTED__PRO(pro_id) {

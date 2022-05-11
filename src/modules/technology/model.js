@@ -9,6 +9,8 @@ class Technology extends PG {
                technology
          WHERE 
                tech_is_delete = false
+         ORDER BY
+               tech_id DESC
       `)
    }
    SELECTED__TECHNOLOGY(tech_id) {

@@ -7,6 +7,8 @@ class Carusel extends PG {
                *
          FROM
                carusel
+         ORDER BY
+               carusel_id DESC
       `)
    }
    ADD_CARUSEL (carusel_title, carusel_image) {

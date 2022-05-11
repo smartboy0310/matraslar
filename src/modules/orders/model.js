@@ -8,7 +8,9 @@ class Orders extends PG {
          FROM
                orders
          WHERE 
-         order_is_delete = false
+               order_is_delete = false
+         ORDER BY
+               order_id DESC
       `)
    }
    SEARCH_ORDER (search_data) {
