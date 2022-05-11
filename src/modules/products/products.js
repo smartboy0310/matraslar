@@ -1,3 +1,4 @@
+require('dotenv').config()
 const model = require('./model');
 
 module.exports = {
@@ -22,7 +23,7 @@ module.exports = {
 			const pro_images = [];
 			const imgFile = req.files;
 			imgFile.map((e) => {
-				pro_images.push(e.path);
+				pro_images.push(`${process.env.BACK_URL}/${e.originalname}`);
 			});
 
 			const {
@@ -68,7 +69,7 @@ module.exports = {
 			const pro_images = [];
 			const imgFile = req.files;
 			imgFile.map((e) => {
-			pro_images.push(e.path);
+				pro_images.push(`${process.env.BACK_URL}/${e.originalname}`);
 			});
 			const {
 				pro_id,

@@ -1,5 +1,6 @@
-const model = require('./model');
 require('dotenv').config()
+const model = require('./model');
+
 module.exports = {
 	GET_TECHNOLOGY: async (_, res) => {
 		try {

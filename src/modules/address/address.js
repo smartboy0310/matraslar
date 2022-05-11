@@ -16,7 +16,7 @@ module.exports = {
          const add_image = [];
          const imgFile = req.files;
          imgFile.map((e) => {
-            add_image.push(e.path);
+            add_image.push(`${process.env.BACK_URL}/${e.originalname}`);
          });
          const { add_name, add_intended, add_loc } = req.body
          const add_active = req.body.add_active ? true : false;
@@ -35,7 +35,7 @@ module.exports = {
          const add_image = [];
          const imgFile = req.files;
          imgFile.map((e) => {
-            add_image.push(e.path);
+            add_image.push(`${process.env.BACK_URL}/${e.originalname}`);
          });
          const { add_id, add_name, add_intended, add_loc } = req.body
          const add_active = req.body.add_active ? true : false;
