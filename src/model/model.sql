@@ -35,6 +35,7 @@ CREATE TABLE products (
 CREATE TABLE carusel (
    carusel_id serial PRIMARY KEY,
    carusel_title varchar(256) not null,
+   carusel_is_delete boolean DEFAULT false,
    carusel_create_at timestamptz DEFAULT CURRENT_TIMESTAMP,
    carusel_delete_at timestamptz DEFAULT CURRENT_TIMESTAMP,
    carusel_image text not null
@@ -45,6 +46,7 @@ CREATE TABLE generel (
    practice varchar(64) not null,
    glad_client varchar(64) not null,
    guarantee varchar(64) not null,
+   generel_is_delete boolean DEFAULT false,
    generel_create_at timestamptz DEFAULT CURRENT_TIMESTAMP,
    generel_delete_at timestamptz DEFAULT CURRENT_TIMESTAMP,
    delivery varchar(64) not null

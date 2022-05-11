@@ -69,8 +69,10 @@ module.exports = {
 			const pro_images = [];
 			const imgFile = req.files;
 			imgFile.map((e) => {
+				console.log(e.originalname);
 				pro_images.push(`${process.env.BACK_URL}/${e.originalname}`);
 			});
+			console.log(pro_images);
 			const {
 				pro_id,
 				pro_name,
