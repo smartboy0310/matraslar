@@ -12,17 +12,18 @@ class ProModel extends PG {
                model_is_delete = false
       `)
    }
-   ADD_MODEL(model_name) {
+   ADD_MODEL(model_name, model_active) {
       return this.fetch(`
       INSERT INTO
                      model_matras (
-                        model_name
+                        model_name, 
+                        model_active
                      )
          VALUES   (
-                     $1
+                     $1, $2
                     )
          RETURNING *        
-      `, model_name)
+      `, model_name, model_active)
    }
   
    UPDATE_MODEL(model_id, model_name, model_active) {

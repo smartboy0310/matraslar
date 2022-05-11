@@ -34,9 +34,9 @@ module.exports = {
 		}
 	},
    DELETE_CUSTOMERS: async (req, res) => {
-		try {         
+		try {      
        	const { cust_id, cust_is_delete } = req.body;
-			res.json(await model.EDIT_FEEDBACK(cust_id, cust_is_delete));
+			res.json(await model.DELETE_CUSTOMERS(cust_id, cust_is_delete));
 		} catch (error) {
 			res.json({
 				status: 500,

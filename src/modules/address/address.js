@@ -18,7 +18,9 @@ module.exports = {
          imgFile.map((e) => {
             add_image.push(e.path);
          });
-         const { add_name, add_intended, add_loc, add_active} = req.body
+         const { add_name, add_intended, add_loc } = req.body
+         const add_active = req.body.add_active ? true : false;
+
          await model.ADD_ADDRESS( add_name, add_intended, add_loc, add_image, add_active)        
          res.redirect(`${process.env.FRONT_URL}/matras-admin/admin/location`)         
       } catch (error) {
@@ -35,8 +37,8 @@ module.exports = {
          imgFile.map((e) => {
             add_image.push(e.path);
          });
-         const { add_id, add_name, add_intended, add_loc, add_active } = req.body
-         
+         const { add_id, add_name, add_intended, add_loc } = req.body
+         const add_active = req.body.add_active ? true : false;
          const old_add_image = await model.SELECTED__ADDRESS(add_id)
          
          if (!imgFile.length) {
@@ -56,8 +58,8 @@ module.exports = {
    DELETE_ADDRESS: async(req, res) => {
       try {
          const {add_id, add_is_delete} = req.body
-         await model.DELETE_ADDRESS(add_id, add_is_delete) 
-         res.redirect(`${process.env.FRONT_URL}/matras-admin/admin/location`)      
+         res.json(await model.DELETE_ADDRESS(add_id, add_is_delete)) 
+            
       } catch (error) {
          res.json({
             status: 500,

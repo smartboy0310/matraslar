@@ -26,13 +26,13 @@ module.exports = {
 				pro_format,
 				pro_guarantee,
 				pro_size,
-				pro_share_price,
 				pro_info,
 				model_id,
 			} = req.body;
 
 			const pro_active = req.body.pro_active ? true : false;
 			const pro_new = req.body.pro_new ? true : false;
+			const pro_share_price = req.body.pro_share_price ? req.body.pro_share_price : null;
 			
 				await model.ADD_PRO(
 					pro_name,
@@ -72,13 +72,13 @@ module.exports = {
 				pro_format,
 				pro_guarantee,
 				pro_size,
-				pro_share_price,
 				pro_info,
-				pro_new,
-				pro_active,
 				model_id,
 			} = req.body;
-
+			const pro_share_price = req.body.pro_share_price ? req.body.pro_share_price : null;
+			const pro_active = req.body.pro_active ? true : false;
+			const pro_new = req.body.pro_new ? true : false;
+			
 			const old_pro_image = await model.SELECTED__PRO(pro_id)
 			
 			if (!imgFile.length) {
