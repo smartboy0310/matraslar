@@ -1,5 +1,5 @@
 const model = require('./model')
-const generelModel = require('../generel/model')
+
 
 module.exports = {
    GET_ORDER: async(req, res) => {
@@ -31,10 +31,7 @@ module.exports = {
    },
    PUT_FEEDBACK: async (req, res) => {
 		try {         
-         const count_client = await model.COUNT_FEEDBACK();
-         await generelModel.UPDATE_GLAD_CLIENT(count_client.clients);
-
-			const { order_id, order_feedback } = req.body;
+         const { order_id, order_feedback } = req.body;
 			res.json(await model.EDIT_FEEDBACK(order_id, order_feedback));
 		} catch (error) {
 			res.json({

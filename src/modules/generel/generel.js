@@ -13,8 +13,8 @@ module.exports = {
    },
    POST_GENEREL: async (req, res) => {
       try {
-         const {phone, practice, guarantee, delivery} = req.body
-         res.json( await model.ADD_GENEREL(phone, practice, guarantee, delivery))
+         const {phone, practice, glad_client, guarantee, delivery} = req.body
+         res.json( await model.ADD_GENEREL(phone, practice, glad_client, guarantee, delivery))
       } catch (error) {
          res.json({
             status: 500,

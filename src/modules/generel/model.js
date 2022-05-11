@@ -9,29 +9,21 @@ class Generel extends PG {
                generel
       `)
    }
-   ADD_GENEREL(phone, practice, guarantee, delivery) {
+   ADD_GENEREL(phone, practice, glad_client, guarantee, delivery) {
          return this.fetch(`
          INSERT INTO
                   generel (
                         phone,
-                        practice,
+                        practice, 
+                        glad_client,
                         guarantee,
                         delivery
                         )
          VALUES      (
-                        $1, $2, $3, $4
+                        $1, $2, $3, $4, $5
                      )
          RETURNING *          
-         `, phone, practice, guarantee, delivery)
-   }
-   UPDATE_GLAD_CLIENT(count_client) {
-      return this.fetch(`
-      UPDATE 
-            generel 
-      SET   
-            glad_client = $1
-      RETURNING glad_client
-      `, count_client)
+         `, phone, practice, glad_client, guarantee, delivery)
    }
 }
 module.exports = new Generel

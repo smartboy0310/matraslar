@@ -51,18 +51,7 @@ class Orders extends PG {
          RETURNING * 
       `, order_id, order_is_delete)
    }
-
-   COUNT_FEEDBACK() {
-      return this.fetch(`
-      SELECT 
-            COUNT(*) AS clients 
-      FROM 
-            orders 
-      WHERE 
-            order_feedback = true;
-      `)
-   }
-   EDIT_FEEDBACK(order_id, order_feedback) {
+    EDIT_FEEDBACK(order_id, order_feedback) {
       return this.fetch(`
          UPDATE 
                orders 
