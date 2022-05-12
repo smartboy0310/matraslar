@@ -3,7 +3,7 @@ const model = require('./model')
 module.exports = {
    GET_CUSTOMERS: async (req, res) => {
       try {
-         const {search_data} = req.body
+         const {search_data} = req.params;
          if(search_data) {
             res.json(await model.SEARCH_CUSTOMERS(`%${search_data}%`))
          }

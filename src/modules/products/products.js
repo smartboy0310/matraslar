@@ -4,7 +4,7 @@ const model = require('./model');
 module.exports = {
 	GET_PRO: async (req, res) => {
 		try {
-			const {search_data} = req.body
+			const {search_data} = req.params
 			if(search_data) {
 				res.json(await model.SEARCH_PRO(`%${search_data}%`))
 			}
