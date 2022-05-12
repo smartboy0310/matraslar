@@ -90,7 +90,8 @@ class Products extends PG {
 		return this.fetch(`      
       INSERT INTO
             products 
-                  (pro_name, 
+                  (
+                  pro_name, 
                   pro_price, 
                   pro_particle, 
                   pro_format, 
@@ -101,7 +102,8 @@ class Products extends PG {
                   pro_new,
                   pro_active,
                   pro_images,
-                  model_id )
+                  model_id 
+                  )
              VALUES
                   ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)  
       RETURNING *       

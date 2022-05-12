@@ -15,6 +15,7 @@ const uploadImg = require('../middleware/multer')
 
 router 
       .post('/admin', Admin.LOGIN)
+      
       .put('/editStatus', Products.PUT_STATUS)
       .get('/product', Products.GET_PRO)
       .get('/product/:search_data', Products.GET_PRO)
