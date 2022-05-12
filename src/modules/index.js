@@ -16,6 +16,7 @@ const uploadImg = require('../middleware/multer')
 router 
       .post('/admin', Admin.LOGIN)
       .put('/editStatus', Products.PUT_STATUS)
+      .get('/product', Products.GET_PRO)
       .get('/product/:search_data', Products.GET_PRO)
       .post('/product', uploadImg.array("images"), Products.POST_PRO)
       .post('/products',uploadImg.array("images"), Products.PUT_PRO)
@@ -33,11 +34,13 @@ router
       .get('/generel', Generel.GET_GENEREL) 
       .post('/generel', Generel.POST_GENEREL)
 
+      .get('/order', Orders.GET_ORDER)
       .get('/order/:search_data', Orders.GET_ORDER)
       .post('/order', uploadImg.single("img"),Orders.POST_ORDER)
       .put('/order', Orders.PUT_FEEDBACK)
       .delete('/order', Orders.DELETE_ORDER)
 
+      .get('/customer', Customers.GET_CUSTOMERS)
       .get('/customer/:search_data', Customers.GET_CUSTOMERS)
       .post('/customer', Customers.POST_CUSTOMERS)
       .put('/customer', Customers.PUT_FEEDBACK)
