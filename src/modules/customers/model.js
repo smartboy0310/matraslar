@@ -20,7 +20,7 @@ class Customers extends PG {
          FROM
                customers
          WHERE 
-               cust_is_delete = false AND cust_phone LIKE $1
+               cust_is_delete = false AND cust_phone ILIKE $1
          ORDER BY
                cust_id DESC         
 `, search_data)

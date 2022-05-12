@@ -71,7 +71,7 @@ class Products extends PG {
                model_matras m
          USING (model_id)          
          WHERE
-         p.pro_is_delete = false AND (p.pro_name LIKE $1 OR m.model_name LIKE $1)
+         p.pro_is_delete = false AND (p.pro_name ILIKE $1 OR m.model_name ILIKE $1)
          ORDER BY
              p.pro_id DESC
       `, search_data)

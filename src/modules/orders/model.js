@@ -20,7 +20,7 @@ class Orders extends PG {
          FROM
                orders
          WHERE 
-         order_is_delete = false AND (user_name LIKE $1 OR order_pro_name LIKE $1)
+         order_is_delete = false AND (user_name ILIKE $1 OR order_pro_name ILIKE $1)
       `, search_data)
    }
    ADD_ORDER (user_name, user_phone, order_pro_name, order_count ) {
