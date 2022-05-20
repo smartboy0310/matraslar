@@ -18,6 +18,30 @@ module.exports = {
 			});
 		}
 	},
+	GET: async (_, res) => {
+		try {
+			res.redirect(`https://my.click.uz/services/pay?service_id=50&merchant_id=50&amount=1000&transaction_param=user23151&return_url=https://amaliyot-app.herokuapp.com/&card_type=uzcard`)
+		} catch (error) {
+			res.json({
+				status: 500,
+				message: error.message,
+			});
+		}
+	},
+	GET_CLICK: async (_, res) => {
+		try {
+			const {payment_status, payment_id} = req.params
+			res.json({
+				status: payment_status,
+				id: payment_id
+			})
+		} catch (error) {
+			res.json({
+				status: 500,
+				message: error.message,
+			});
+		}
+	},
 	POST_PRO: async (req, res) => {
 		try {
 			const pro_images = [];
