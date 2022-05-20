@@ -30,7 +30,13 @@ module.exports = {
 	},
 	GET_CLICK: async (req, res) => {
 		try {
+			const status = ''
 			const {payment_status, payment_id} = req.params
+			if(!payment_status){
+				status = 'No status'
+			} else {
+				status = payment_status
+			}
 			res.json({
 				status: payment_status,
 				id: payment_id
