@@ -28,7 +28,7 @@ module.exports = {
 			});
 		}
 	},
-	GET_CLICK: async (_, res) => {
+	GET_CLICK: async (req, res) => {
 		try {
 			const {payment_status, payment_id} = req.params
 			res.json({
