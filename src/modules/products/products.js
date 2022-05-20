@@ -31,7 +31,7 @@ module.exports = {
 	GET_CLICK: async (req, res) => {
 		try {
 			const status = ''
-			const {payment_status, payment_id} = req.params
+			const {payment_status, payment_id} = req.query
 			if(!payment_status){
 				status = 'No status'
 			} else {
